@@ -12,10 +12,13 @@
         details summary {cursor:pointer;}
         details[open] {border-left-color:black;border-bottom-color:black;}
         details[open] summary {font-weight:bold;}
-        form#details {display:flex;flex-direction:column;gap:1rem;min-width:200px;max-width:400px;padding:1rem;}
-        form#details .field label {font-weight:bold;}
-        form#details .field label:not([for="titleStroke"]) {display:block;margin-bottom:0.5rem;}
-        form#details .field textarea {max-width:400px;}
+        form#details {display:flex;flex-direction:column;gap:1rem;min-width:200px;max-width:400px;margin-top:1em;}
+        .field {display:flex;gap:0.5rem;}
+        .field.field-column {flex-direction:column;}
+        fieldset {display:flex;flex-direction:column; gap:0.5rem;}
+        fieldset legend {font-weight:bold;}
+        fieldset textarea {max-width:400px;}
+        fieldset input:not([type=checkbox]),fieldset textarea {width:-moz-available;width:-webkit-fill-available;}
     </style>
 </head>
 <body>
@@ -27,69 +30,79 @@
     <canvas width="550" height="412"></canvas>
     <details id="edit">
         <summary>Edit</summary>
-        <p><small><i>Text does not currently wrap, sorry.</i></small></p>
         <form id="details">
-            <div class="field">
-                <label for="cardTitle">Title</label>
-                <input type="text" id="cardTitle" placeholder="Enter a Title..." value="I'm Sorry.">
-            </div>
-            <div class="field">
-                <label for="titleColor">Title Color</label>
-                <input type="color" id="titleColor" value="#63452C">
-            </div>
-            <div class="field">
-                <label for="titlePosition">Title Position</label>
-                <select id="titlePosition">
-                    <option value="100">Top</option>
-                    <option value="200" selected>Middle</option>
-                    <option value="350">Bottom</option>
-                </select>
-            </div>
-            <div class="field">
-                <label for="titleStroke">Title Stroke</label>
-                <input type="checkbox" id="titleStroke" checked>
-            </div>
-            <div class="field">
-                <label for="cardMessage">Message</label>
-                <textarea id="cardMessage" placeholder="Enter a Message...">...I messed up</textarea>
-            </div>
-            <div class="field">
-                <label for="messageColor">Message Color</label>
-                <input type="color" id="messageColor" value="#613583">
-            </div>
-            <div class="field">
-                <label for="backgroundTransparency">Background Transparency</label>
-                <input type="range" id="backgroundTransparency" min="0" max="1" step="0.1" value="0.3">
-            </div>
-            <div class="field">
-                <label for="backgroundStyle">Background Style</label>
-                <select id="backgroundStyle">
-                    <option value="bouquet">Bouquet</option>
-                    <option value="bouquetRandom">Bouquet (random colors)</option>
-                    <option value="bouquetGradient">Bouquet (gradient)</option>
-                    <option value="flowers" selected>Flowers</option>
-                    <option value="flowersRandom">Flowers (random colors)</option>
-                </select>
-            </div>
-            <div class="field">
-                <label for="bouquetFlowerCount">Bouquet Flower Count</label>
-                <input type="range" id="bouquetFlowerCount" min="1" max="10" step="1" value="3">
-            </div>
-            <div class="field">
-                <label for="bouquetSize">Bouquet Size</label>
-                <input type="range" id="bouquetSize" min="1" max="15" step="1" value="10">
-            </div>
-            <div class="field">
-                <label for="bouquetX">Bouquet X</label>
-                <input type="range" id="bouquetX" min="50" max="550" step="10" value="225">
-            </div>
-            <div class="field">
-                <label for="bouquetY">Bouquet Y</label>
-                <input type="range" id="bouquetY" min="50" max="300" step="10" value="150">
-            </div>
-            <div class="field">
-                <input type="button" id="btnRandomizeFlowerColors" value="Randomize Flower Colors">
-            </div>
+            <fieldset>
+                <legend>Title</legend>
+                    <div class="field"><input type="text" id="cardTitle" placeholder="Enter a Title..." value="I'm Sorry."></div>
+                    <div class="field">
+                        <label for="titleSize">Size</label>
+                        <input type="number" id="titleSize" min="1" max="100" step="1" value="78">
+                    </div>
+                    <div class="field">
+                        <label for="titleColor">Color</label>
+                        <input type="color" id="titleColor" value="#63452C">
+                    </div>
+                    <div class="field">
+                        <label for="titlePosition">Position</label>
+                        <select id="titlePosition">
+                            <option value="100">Top</option>
+                            <option value="200" selected>Middle</option>
+                            <option value="350">Bottom</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="titleStroke">Stroke</label>
+                        <input type="checkbox" id="titleStroke" checked>
+                    </div>
+            </fieldset>
+            <fieldset>
+                <legend>Message</legend>
+                <div class="field"><textarea id="cardMessage" placeholder="Enter a Message...">...I messed up</textarea></div>
+                <div class="field">
+                    <label for="messageSize">Size</label>
+                    <input type="number" id="messageSize" min="1" max="50" step="1" value="26">
+                </div>
+                <div class="field">
+                    <label for="messageColor">Color</label>
+                    <input type="color" id="messageColor" value="#613583">
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Background</legend>
+                <div class="field">
+                    <label for="backgroundTransparency">Transparency</label>
+                    <input type="range" id="backgroundTransparency" min="0" max="1" step="0.1" value="0.3">
+                </div>
+                <div class="field">
+                    <label for="backgroundStyle">Style</label>
+                    <select id="backgroundStyle">
+                        <option value="bouquet">Bouquet</option>
+                        <option value="bouquetRandom">Bouquet (random colors)</option>
+                        <option value="bouquetGradient">Bouquet (gradient)</option>
+                        <option value="flowers" selected>Flowers</option>
+                        <option value="flowersRandom">Flowers (random colors)</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <input type="button" id="btnRandomizeFlowerColors" value="Randomize Flower Colors">
+                </div>
+                <div class="field">
+                    <label for="bouquetFlowerCount">Bouquet Flower Count</label>
+                    <input type="range" id="bouquetFlowerCount" min="1" max="10" step="1" value="3">
+                </div>
+                <div class="field">
+                    <label for="bouquetSize">Bouquet Size</label>
+                    <input type="range" id="bouquetSize" min="1" max="15" step="1" value="10">
+                </div>
+                <div class="field">
+                    <label for="bouquetX">Bouquet X</label>
+                    <input type="range" id="bouquetX" min="50" max="550" step="10" value="225">
+                </div>
+                <div class="field">
+                    <label for="bouquetY">Bouquet Y</label>
+                    <input type="range" id="bouquetY" min="50" max="300" step="10" value="150">
+                </div>
+            </fieldset>
         </form>
     </details>
     <details class="license">
@@ -131,41 +144,9 @@ SOFTWARE.
         const deg = (deg) => deg * Math.PI / 180;
 
         /**
-         * @type {HTMLFormElement|null}
+         * Keeps track of the number of flowers drawn.
+         * For debugging purposes.
          */
-        const form = $('form#details');
-
-        /**
-         * @type {HTMLCanvasElement}
-         */
-        const canvas = $('canvas')[0];
-
-        /**
-         * @type {CanvasRenderingContext2D}
-         */
-        const foreground = canvas.getContext('2d');
-
-        /*
-            * In order to stop colors from mixing with other layers when opacity is used,
-            * we need to create a detached canvas that we will draw as a background image layer.
-            * 
-            * Adapted from: https://stackoverflow.com/a/71433092/5825414
-            * /
-        
-        /**
-         * Detached canvas.
-         * 
-         * @type {HTMLCanvasElement}
-         */
-        const detachedCanvas = canvas.cloneNode();
-
-        /**
-         * Background layer.
-         * 
-         * @type {CanvasRenderingContext2D}
-         */
-        const background = detachedCanvas.getContext('2d');
-
         var flowerCounter = 1;
 
         // Get the debug flag from the URL.
@@ -173,56 +154,40 @@ SOFTWARE.
 
         // Background Styles
         const backgroundStyles = {
-            "bouquet": function() {
-                bouquet(
-                    background,
-                    parseInt(form.bouquetX.value),
-                    parseInt(form.bouquetY.value),
-                    parseInt(form.bouquetFlowerCount.value),
-                    parseInt(form.bouquetSize.value),
-                    [
-                        [[255,0,0], [246,187,253]],
-                        [[255,125,1], [157,32,91]],
-                        [[255,0,255], [0,0,255]]
-                    ]
-                );
+            "bouquet": function(context) {
+                let bX = parseInt($('#bouquetX').value);
+                let bY = parseInt($('#bouquetY').value);
+                let bFlowerCount = 3;
+                let bSize = 10;
+                bouquet(context,bX,bY,bFlowerCount,bSize,[[[255,0,0],[246,187,253]],[[255,125,1],[157,32,91]],[[255,0,255],[0,0,255]]]);
             },
-            "bouquetRandom": function() {
-                bouquet(
-                    background,
-                    parseInt(form.bouquetX.value),
-                    parseInt(form.bouquetY.value),
-                    parseInt(form.bouquetFlowerCount.value),
-                    parseInt(form.bouquetSize.value)
-                );
+            "bouquetRandom": function(context) {
+                let bX = parseInt($('#bouquetX').value);
+                let bY = parseInt($('#bouquetY').value);
+                let bFlowerCount = parseInt($('#bouquetFlowerCount').value);
+                let bSize = parseInt($('#bouquetSize').value);
+                bouquet(context,bX,bY,bFlowerCount,bSize);
             },
-            "bouquetGradient": function() {
-                bouquet(
-                    background,
-                    parseInt(form.bouquetX.value),
-                    parseInt(form.bouquetY.value),
-                    parseInt(form.bouquetFlowerCount.value),
-                    parseInt(form.bouquetSize.value),
-                    [
-                        [[[255,0,0], [246,187,253]]],
-                        [[[255,125,1], [157,32,91]]],
-                        [[[255,0,255], [0,0,255]]]
-                    ]
-                );
+            "bouquetGradient": function(context) {
+                let bX = parseInt($('#bouquetX').value);
+                let bY = parseInt($('#bouquetY').value);
+                let bFlowerCount = parseInt($('#bouquetFlowerCount').value);
+                let bSize = parseInt($('#bouquetSize').value);
+                bouquet(context,bX,bY,bFlowerCount,bSize,[[[[255,0,0],[246,187,253]]],[[[255,125,1],[157,32,91]]],[[[255,0,255],[0,0,255]]]]);
             },
-            "flowers": function() {
-                flower(background, 150, 50, 30, 30, 10, 20, [255,0,0], [255,255,0]);
-                flower(background, 400, 300, 40, 30, 10, 25, hexToRgb('#fcf7e1'), hexToRgb('#d710b5'));
-                flower(background, 300, 200, 50, 50, 15, 25, [0,0,255], [0,255,255]);
-                flower(background, 120, 300, 40, 30, 10, 25, [255,125,1], [246,187,253]);
-                flower(background, 450, 100, 25, 30, 10, 20, [255,125,1], [157,32,91]);
+            "flowers": function(context) {
+                flower(context, 150, 50, 30, 30, 10, 20, [255,0,0], [255,255,0]);
+                flower(context, 400, 300, 40, 30, 10, 25, hexToRgb('#fcf7e1'), hexToRgb('#d710b5'));
+                flower(context, 300, 200, 50, 50, 15, 25, [0,0,255], [0,255,255]);
+                flower(context, 120, 300, 40, 30, 10, 25, [255,125,1], [246,187,253]);
+                flower(context, 450, 100, 25, 30, 10, 20, [255,125,1], [157,32,91]);
             },
-            "flowersRandom": function() {
-                flower(background, 150, 50, 30, 30, 10, 20);
-                flower(background, 400, 300, 40, 30, 10, 25);
-                flower(background, 300, 200, 50, 50, 15, 25);
-                flower(background, 120, 300, 40, 30, 10, 25);
-                flower(background, 450, 100, 25, 30, 10, 20);
+            "flowersRandom": function(context) {
+                flower(context, 150, 50, 30, 30, 10, 20);
+                flower(context, 400, 300, 40, 30, 10, 25);
+                flower(context, 300, 200, 50, 50, 15, 25);
+                flower(context, 120, 300, 40, 30, 10, 25);
+                flower(context, 450, 100, 25, 30, 10, 20);
             },
         };
 
@@ -263,21 +228,105 @@ SOFTWARE.
             ] : [157,32,91];
         }
 
-        function cardTitle(context, text) {
-            context.font = 'bold 78px Helvetica, Arial, sans-serif';
+        /**
+         * Wraps text onto an HTML canvas of fixed width.
+         * 
+         * Adapted from: https://fjolt.com/article/html-canvas-how-to-wrap-text
+         * 
+         * @param {object} context Canvas context.
+         * @param {string} text Text to wrap.
+         * @param {number} lineX X coordinate of the start of the line.
+         * @param {number} lineY Y coordinate of the start of the line.
+         * @param {number} fontSize Font size. Used to calculate line height.
+         * @param {number} maxWidth Max width of the line.
+         * @returns {array} Array of lines.
+         */
+        function wrapText(context, text, x, y, fontSize, maxWidth) {
+            let words = text.split(' ');
+            let line = ''; // This will store the text of the current line.
+            let testLine = ''; // This will store the text when we add a word, to test if it's too long.
+            let lineArray = [];
+
+            // Ensure that the x and y are integers.
+            x = parseInt(x);
+            y = parseInt(y);
+
+            if (debug && (x === NaN || y === NaN)) {
+                alert(`x and y must be integers. x: ${x}; y: ${y}`);
+                return false;
+            }
+
+            // Parse line coords.
+
+            for(var i = 0; i < words.length; i++) {
+                // Create a test line, and measure it.
+                testLine += `${words[i]} `;
+                // If the width of this test line is more than the max width.
+                if (context.measureText(testLine).width > maxWidth && i > 0) {
+                    // Then the line is finished, push the current line into "lineArray".
+                    lineArray.push([line, x, y]);
+                    // Increase the line height, so a new line is started.
+                    y += parseInt(fontSize);
+                    // Update line and testLine to use this word as the first word on the next line.
+                    line = `${words[i]} `;
+                    testLine = `${words[i]} `;
+                }
+                else {
+                    // If the test line is still less than the max width, then add the word to the current line.
+                    line += `${words[i]} `;
+                }
+                // If we never reach the full max width, then there is only one line.. so push it into the lineArray so we return something.
+                if(i === words.length - 1) {
+                    lineArray.push([line, x, y]);
+                }
+            }
+
+            return lineArray;
+        }
+
+
+        function cardTitle(context, x, y, text, fontSize=78, color='#63452C', stroke=false) {
+            if (!text) return false;
+
+            context.font = `bold ${fontSize}px Helvetica, Arial, sans-serif`;
             context.textAlign = 'start';
             context.textBaseline = 'center';
             context.direction = 'ltr';
-            context.fillStyle = form.titleColor.value;
-            context.strokeStyle = form.titleColor.value;
+            context.fillStyle = color;
+            context.strokeStyle = color;
             context.lineWidth = 2;
 
-            // TODO: Wrap text to fit within the card.
+            //Wrap text to fit within the card.
+            let lineArray = wrapText(context, text, x, y, fontSize, context.canvas.width);
+            lineArray.forEach(line => {
+                // Remove any decimals.
+                line[1] = Math.round(line[1]);
+                line[2] = Math.round(line[2]);
 
-            context.fillText(text, 25, parseInt(form.titlePosition.value));
-            if (form.titleStroke.checked) {
-                context.strokeText(text, 30, parseInt(form.titlePosition.value) + 5);
-            }
+                // Stroke the text first so it's behind the fill.
+                if (stroke) {
+                    // Offset x and y for all sizes using a quadratic function.
+                    let offset = quad(fontSize/100, 5);
+                    context.strokeText(line[0], line[1]+offset, line[2]+offset);
+                }
+                context.fillText(line[0], line[1], line[2]);
+            });
+            
+        }
+
+        function cardMessage(context, x, y, text, fontSize=26, color='#613583') {
+            if (!text) return false;
+
+            context.font = `italic ${fontSize}px Helvetica, Arial, sans-serif`;
+            context.textAlign = 'start';
+            context.textBaseline = 'center';
+            context.direction = 'ltr';
+            context.fillStyle = color
+
+            let lineArray = wrapText(context, text, x, y, fontSize, context.canvas.width);
+            lineArray.forEach(line => {
+                context.fillText(line[0], line[1], line[2]);
+            });
         }
 
         /**
@@ -291,6 +340,8 @@ SOFTWARE.
          */
         function bouquet(context, xPos, yPos, countFlowers=5, size=5, flowerColors=[]){
 
+            const style = $('#backgroundStyle').value;
+            const maxSize = parseInt($('#bouquetSize').max);
             const flowerSeparation = size * 10;
             const stemWidth = size * 1.5;
             const stemHeight = size * 30;
@@ -306,7 +357,7 @@ SOFTWARE.
                 let stemBase = xPos + (flowerSeparation * middleFlower);
 
                 // If gradient style, use a gradient for the stems as well.
-                if (form.backgroundStyle.value === 'bouquetGradient') {
+                if (flowerColors[i] !== undefined && flowerColors[i][0].length === 2) {
                     let gradient = context.createLinearGradient(x, y, x, y+stemHeight);
                     gradient.addColorStop(0, '#0C0');
                     gradient.addColorStop(0.8, '#03581A');
@@ -323,9 +374,9 @@ SOFTWARE.
                 context.stroke();
 
                 if (flowerColors[i] === undefined) {
-                    flower(context, x, y, size*3, size*2, size*1, quad(size/form.bouquetSize.max, maxPetals));
+                    flower(context, x, y, size*3, size*2, size*1, quad(size/maxSize, maxPetals));
                 } else {
-                    flower(context, x, y, size*3, size*2, size*1, quad(size/form.bouquetSize.max, maxPetals), flowerColors[i][0], flowerColors[i][1]);
+                    flower(context, x, y, size*3, size*2, size*1, quad(size/maxSize, maxPetals), flowerColors[i][0], flowerColors[i][1]);
                 }
             }
         }
@@ -333,12 +384,7 @@ SOFTWARE.
         /**
          * Creates a flower on the canvas.
          * 
-         * Takes two optional parameters, rgbCenter and rgbPetals, which are
-         * used to set the color of the flower's center and petals, respectively.
-         * These values are then made darker to color the stroke.
-         * 
-         * @param {object} context Canvas context.
-         * @param {number} xPos X coordinate of the center of the flower.
+         * Takes two optional parameters, rgbCenter and rgbPetals, which are, form.titlePosition.value
          * @param {number} yPos Y coordinate of the center of the flower.
          * @param {number} rFlowerCenter Radius of the center of the flower.
          * @param {number} petalLength Length of the petals.
@@ -376,8 +422,6 @@ SOFTWARE.
                 randomPetalColor();
             }
 
-            if (debug) console.log(`${flowerCounter}: ${rgbCenter};${rgbPetals}`);
-
             if (rgbCenter.length === 2) {
                 colorCenter = context.createRadialGradient(xPos, yPos, rFlowerCenter/2, xPos, yPos, rFlowerCenter);
                 colorCenter.addColorStop(0, `rgb(${rgbCenter[0][0]},${rgbCenter[0][1]},${rgbCenter[0][2]})`);
@@ -406,9 +450,6 @@ SOFTWARE.
                 context.fill();
                 context.stroke();
             }
-
-            // Log the petal cords and angles to the console.
-            // console.log(`petalAttributes: ${JSON.stringify(petalAttributes)}`);
 
             /*
             Draw the petals.
@@ -445,83 +486,135 @@ SOFTWARE.
             flowerCounter++;
         }
 
-        function cardMessage(context, text) {
-            context.font = 'italic 26px Helvetica, Arial, sans-serif';
-            context.textAlign = 'start';
-            context.textBaseline = 'center';
-            context.direction = 'ltr';
-            context.fillStyle = form.messageColor.value;
-
-            // TODO: Wrap text to fit within the card.
-
-            if (form.titlePosition.options[form.titlePosition.selectedIndex].text === 'Top') {
-                context.fillText(text, 25, 150);
-                return;
-            } else if (form.titlePosition.options[form.titlePosition.selectedIndex].text === 'Middle') {
-                context.fillText(text, 25, 250);
-                return;
-            } else if (form.titlePosition.options[form.titlePosition.selectedIndex].text === 'Bottom') {
-                context.fillText(text, 25, 100);
-                return;
-            }
-        }
-
         function bouquetControls() {
-            if (form.backgroundStyle.value.includes('bouquet')) {
-                $('input#bouquetFlowerCount').parentNode.style.display = 'initial';
-                $('input#bouquetSize').parentNode.style.display = 'initial';
-                $('input#bouquetX').parentNode.style.display = 'initial';
-                $('input#bouquetY').parentNode.style.display = 'initial';
+            const style = $('#backgroundStyle').value;
+            if (style.includes('bouquet')) {
+                $('#bouquetX').parentNode.style.display = 'initial';
+                $('#bouquetY').parentNode.style.display = 'initial';
+                if (style !== 'bouquet') {
+                    $('#bouquetFlowerCount').parentNode.style.display = 'initial';
+                    $('#bouquetSize').parentNode.style.display = 'initial';
+                } else {
+                    $('#bouquetFlowerCount').parentNode.style.display = 'none';
+                    $('#bouquetSize').parentNode.style.display = 'none';
+                }
             } else {
-                $('input#bouquetFlowerCount').parentNode.style.display = 'none';
-                $('input#bouquetSize').parentNode.style.display = 'none';
-                $('input#bouquetX').parentNode.style.display = 'none';
-                $('input#bouquetY').parentNode.style.display = 'none';
+                $('#bouquetFlowerCount').parentNode.style.display = 'none';
+                $('#bouquetSize').parentNode.style.display = 'none';
+                $('#bouquetX').parentNode.style.display = 'none';
+                $('#bouquetY').parentNode.style.display = 'none';
             }
         }
 
-        // Draw the canvas.
+        function randomizeControls() {
+            if ($('#backgroundStyle').value.includes('random')) {
+                $('#btnRandomizeFlowerColors').parentNode.style.display = 'initial';
+            } else {
+                $('#btnRandomizeFlowerColors').parentNode.style.display = 'none';
+            }
+        }
+
+        /**
+         * Draws the canvas.
+         */
         function drawCanvas() {
 
-            // Clear the canvas.
-            foreground.clearRect(0,0,canvas.width,canvas.height);
-            background.clearRect(0,0,canvas.width,canvas.height);
+            try {
+
+                /**
+                 * @type {HTMLFormElement|null}
+                 */
+                const form = $('form#details');
+
+                /**
+                 * @type {HTMLCanvasElement}
+                 */
+                const canvas = $('canvas')[0];
+
+                /**
+                 * @type {CanvasRenderingContext2D}
+                 */
+                const foreground = canvas.getContext('2d');
+
+                /*
+                * In order to stop colors from mixing with other layers when opacity is used,
+                * we need to create a detached canvas that we will draw as a background image layer.
+                * 
+                * Adapted from: https://stackoverflow.com/a/71433092/5825414
+                * /
+
+                /**
+                 * Detached canvas.
+                 * 
+                 * @type {HTMLCanvasElement}
+                 */
+                const detachedCanvas = canvas.cloneNode();
+
+                /**
+                 * Background layer.
+                 * 
+                 * @type {CanvasRenderingContext2D}
+                 */
+                const background = detachedCanvas.getContext('2d');
+
+                // Clear the canvas.
+                foreground.clearRect(0,0,canvas.width,canvas.height);
+                background.clearRect(0,0,canvas.width,canvas.height);
 
 
-            backgroundStyles[form.backgroundStyle.value]();
+                backgroundStyles[form.backgroundStyle.value](background);
 
-            // Draw the background with a 20% opacity.
-            foreground.globalAlpha = form.backgroundTransparency.value;
-            foreground.drawImage(detachedCanvas, 0, 0);
+                // Draw the background with a 20% opacity.
+                foreground.globalAlpha = form.backgroundTransparency.value;
+                foreground.drawImage(detachedCanvas, 0, 0);
 
-            // Reset the opacity and draw the foreground.
-            foreground.globalAlpha = 1;
-            cardTitle(foreground, form.cardTitle.value, form.titlePosition.value);
-            cardMessage(foreground, form.cardMessage.value);
+                // Reset the opacity and draw the foreground.
+                foreground.globalAlpha = 1;
+                cardTitle(foreground, 25, form.titlePosition.value, form.cardTitle.value, form.titleSize.value, form.titleColor.value, form.titleStroke.checked);
+
+                let messagePosition = 250;
+                if (form.titlePosition.options[form.titlePosition.selectedIndex].text === 'Top') {
+                    messagePosition = 150;
+                } else if (form.titlePosition.options[form.titlePosition.selectedIndex].text === 'Middle') {
+                    messagePosition = 250;
+                } else if (form.titlePosition.options[form.titlePosition.selectedIndex].text === 'Bottom') {
+                    messagePosition = 100;
+                }
+                cardMessage(foreground, 25, messagePosition, form.cardMessage.value, form.messageSize.value, form.messageColor.value);
+
+            } catch (error) {
+                if (debug) alert(error);
+            }
         }
 
-        // If a bouquet is selected, add additional controls for position and size.
-        $('select#backgroundStyle').addEventListener('change', bouquetControls);
-
-        // Draw canvas on page load.
+        // Draw canvas on load.
         document.addEventListener('DOMContentLoaded', () => {
             bouquetControls();
+            randomizeControls();
             drawCanvas();
-        });
 
-        // Redraw canvas when form values change.
-        Array.from(form.elements).forEach(control => {
-            // If control is an input, listen for input events.
-            // Otherwise, listen for change events.
-            if (control.tagName === 'INPUT') {
-                control.addEventListener('input', drawCanvas);
-            } else {
-                control.addEventListener('change', drawCanvas);
-            }
-        });
+            // Redraw canvas when form values change.
+            Array.from($('form#details').elements).forEach(control => {
+                // If control is an input, listen for input events.
+                // Otherwise, listen for change events.
+                if (control.tagName === 'INPUT') {
+                    control.addEventListener('input', drawCanvas);
+                } else {
+                    control.addEventListener('change', drawCanvas);
+                }
+            });
 
-        // Randomize flower colors.
-        $('input#btnRandomizeFlowerColors').addEventListener('click', drawCanvas);
+            // Randomize flower colors.
+            $('#btnRandomizeFlowerColors').addEventListener('click', drawCanvas);
+
+            // If a different style is selected, add additional controls.
+            $('#backgroundStyle').addEventListener('change', element => {
+                let style = element.target.value;
+                if (style.includes('bouquet')) bouquetControls();
+                if (style.includes('random')) randomizeControls();
+            });
+        });
+        
     </script>
 </body>
 </html>

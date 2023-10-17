@@ -4,7 +4,7 @@ Originally a HTML5 Canvas assignment for a "Graphics for the Web" college course
 
 ## To Do Eventually
 
-- [ ] Text wrap
+- [x] Text wrap
 - [ ] Limit characters for title/message
 - [ ] Button to save image
 - [ ] Button to copy image
