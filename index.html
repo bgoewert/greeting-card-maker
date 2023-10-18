@@ -44,87 +44,95 @@
 </head>
 <body>
     <h1>Greeting Card Maker</h1>
-    <p>Originally a HTML5 Canvas assignment for a "Graphics for the Web" college course. Expanded to be able to edit the canvas and create apology/greeting cards. This is mainly an educational project.</p>
-    <p>The canvas is sized to 550x412 pixels, which is the same as a 4:3 6x9 greeting card.</p>
-    <!-- 550 x 412 is 4:3 ratio which is the same as a 6x9 greeting card -->
-    <canvas width="550" height="412"></canvas>
-    <details id="edit">
-        <summary>Edit</summary>
-        <form id="details">
-            <fieldset>
-                <legend>Title</legend>
-                    <div class="field"><input type="text" id="cardTitle" placeholder="Enter a Title..." value="I'm Sorry."></div>
-                    <div class="field">
-                        <label for="titleSize">Size</label>
-                        <input type="number" id="titleSize" min="1" max="100" step="1" value="78">
-                    </div>
-                    <div class="field">
-                        <label for="titleColor">Color</label>
-                        <input type="color" id="titleColor" value="#63452C">
-                    </div>
-                    <div class="field">
-                        <label for="titlePosition">Position</label>
-                        <select id="titlePosition">
-                            <option value="100">Top</option>
-                            <option value="200" selected>Middle</option>
-                            <option value="350">Bottom</option>
-                        </select>
-                    </div>
-                    <div class="field">
-                        <label for="titleStroke">Stroke</label>
-                        <input type="checkbox" id="titleStroke" checked>
-                    </div>
-            </fieldset>
-            <fieldset>
-                <legend>Message</legend>
-                <div class="field"><textarea id="cardMessage" placeholder="Enter a Message...">...I messed up</textarea></div>
+    <p>by <a href="https://bgoewert.com">Brennan Goewert</a></p>
+    <p><i>This is an educational project.</i></p>
+    <p>Originally a HTML5 Canvas assignment for a "Graphics for the Web" college course. I expanded it to be able to edit the canvas and create apology/greeting cards. The canvas is sized to 550x412 pixels, which is the same as a 4:3 6x9 greeting card.</p>
+    <p>View the <a href="https://github.com/bgoewert/greeting-card-maker">GitHub Repo</a><br></p>
+    <div style="margin-bottom:1em;">
+        <img alt="GitHub last commit (branch)" src="https://img.shields.io/github/last-commit/bgoewert/greeting-card-maker/main">
+        <img alt="GitHub" src="https://img.shields.io/github/license/bgoewert/greeting-card-maker">
+    </div>
+    <main>
+<!-- 550 x 412 is 4:3 ratio which is the same as a 6x9 greeting card -->
+<canvas width="550" height="412"></canvas>
+<details id="edit">
+    <summary>Edit</summary>
+    <form id="details">
+        <fieldset>
+            <legend>Title</legend>
+                <div class="field"><input type="text" id="cardTitle" placeholder="Enter a Title..." value="I'm Sorry."></div>
                 <div class="field">
-                    <label for="messageSize">Size</label>
-                    <input type="number" id="messageSize" min="1" max="50" step="1" value="26">
+                    <label for="titleSize">Size</label>
+                    <input type="number" id="titleSize" min="1" max="100" step="1" value="78">
                 </div>
                 <div class="field">
-                    <label for="messageColor">Color</label>
-                    <input type="color" id="messageColor" value="#613583">
-                </div>
-            </fieldset>
-            <fieldset>
-                <legend>Background</legend>
-                <div class="field">
-                    <label for="backgroundTransparency">Transparency</label>
-                    <input type="range" id="backgroundTransparency" min="0" max="1" step="0.1" value="0.3">
+                    <label for="titleColor">Color</label>
+                    <input type="color" id="titleColor" value="#63452C">
                 </div>
                 <div class="field">
-                    <label for="backgroundStyle">Style</label>
-                    <select id="backgroundStyle">
-                        <option value="bouquet">Bouquet</option>
-                        <option value="bouquetRandom">Bouquet (random colors)</option>
-                        <option value="bouquetGradient">Bouquet (gradient)</option>
-                        <option value="flowers" selected>Flowers</option>
-                        <option value="flowersRandom">Flowers (random colors)</option>
+                    <label for="titlePosition">Position</label>
+                    <select id="titlePosition">
+                        <option value="100">Top</option>
+                        <option value="200" selected>Middle</option>
+                        <option value="350">Bottom</option>
                     </select>
                 </div>
                 <div class="field">
-                    <input type="button" id="btnRandomizeFlowerColors" value="Randomize Flower Colors">
+                    <label for="titleStroke">Stroke</label>
+                    <input type="checkbox" id="titleStroke" checked>
                 </div>
-                <div class="field">
-                    <label for="bouquetFlowerCount">Bouquet Flower Count</label>
-                    <input type="range" id="bouquetFlowerCount" min="1" max="10" step="1" value="3">
-                </div>
-                <div class="field">
-                    <label for="bouquetSize">Bouquet Size</label>
-                    <input type="range" id="bouquetSize" min="1" max="15" step="1" value="10">
-                </div>
-                <div class="field">
-                    <label for="bouquetX">Bouquet X</label>
-                    <input type="range" id="bouquetX" min="50" max="550" step="10" value="225">
-                </div>
-                <div class="field">
-                    <label for="bouquetY">Bouquet Y</label>
-                    <input type="range" id="bouquetY" min="50" max="300" step="10" value="150">
-                </div>
-            </fieldset>
-        </form>
-    </details>
+        </fieldset>
+        <fieldset>
+            <legend>Message</legend>
+            <div class="field"><textarea id="cardMessage" placeholder="Enter a Message...">...I messed up</textarea></div>
+            <div class="field">
+                <label for="messageSize">Size</label>
+                <input type="number" id="messageSize" min="1" max="50" step="1" value="26">
+            </div>
+            <div class="field">
+                <label for="messageColor">Color</label>
+                <input type="color" id="messageColor" value="#613583">
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Background</legend>
+            <div class="field">
+                <label for="backgroundTransparency">Transparency</label>
+                <input type="range" id="backgroundTransparency" min="0" max="1" step="0.1" value="0.3">
+            </div>
+            <div class="field">
+                <label for="backgroundStyle">Style</label>
+                <select id="backgroundStyle">
+                    <option value="bouquet">Bouquet</option>
+                    <option value="bouquetRandom">Bouquet (random colors)</option>
+                    <option value="bouquetGradient">Bouquet (gradient)</option>
+                    <option value="flowers" selected>Flowers</option>
+                    <option value="flowersRandom">Flowers (random colors)</option>
+                </select>
+            </div>
+            <div class="field">
+                <input type="button" id="btnRandomizeFlowerColors" value="Randomize Flower Colors">
+            </div>
+            <div class="field">
+                <label for="bouquetFlowerCount">Bouquet Flower Count</label>
+                <input type="range" id="bouquetFlowerCount" min="1" max="10" step="1" value="3">
+            </div>
+            <div class="field">
+                <label for="bouquetSize">Bouquet Size</label>
+                <input type="range" id="bouquetSize" min="1" max="15" step="1" value="10">
+            </div>
+            <div class="field">
+                <label for="bouquetX">Bouquet X</label>
+                <input type="range" id="bouquetX" min="50" max="550" step="10" value="225">
+            </div>
+            <div class="field">
+                <label for="bouquetY">Bouquet Y</label>
+                <input type="range" id="bouquetY" min="50" max="300" step="10" value="150">
+            </div>
+        </fieldset>
+    </form>
+</details>
+    </main>
     <script>
         // Shorthand for document.querySelector and document.querySelectorAll
         const $ = (selector) => selector.includes('#') ? document.querySelector(selector) : document.querySelectorAll(selector);
