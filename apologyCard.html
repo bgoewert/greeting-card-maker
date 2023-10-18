@@ -228,6 +228,7 @@
          * Wraps text onto an HTML canvas of fixed width.
          * 
          * Adapted from: https://fjolt.com/article/html-canvas-how-to-wrap-text
+         * Credits to the author.
          * 
          * @param {object} context Canvas context.
          * @param {string} text Text to wrap.
@@ -281,6 +282,17 @@
         }
 
 
+        /**
+         * Creates a title on the canvas.
+         * 
+         * @param {object} context Canvas context.
+         * @param {number} x X coordinate of the center of the title.
+         * @param {number} y Y coordinate of the center of the title.
+         * @param {string} text Text to display.
+         * @param {number} fontSize Font size.
+         * @param {string} color Color of the text.
+         * @param {boolean} stroke Whether or not to stroke the text.
+         */
         function cardTitle(context, x, y, text, fontSize=78, color='#63452C', stroke=false) {
             if (!text) return false;
 
@@ -310,6 +322,16 @@
             
         }
 
+        /**
+         * Creates a message on the canvas.
+         * 
+         * @param {object} context Canvas context.
+         * @param {number} x X coordinate of the center of the message.
+         * @param {number} y Y coordinate of the center of the message.
+         * @param {string} text Text to display.
+         * @param {number} fontSize Font size.
+         * @param {string} color Color of the text.
+         */
         function cardMessage(context, x, y, text, fontSize=26, color='#613583') {
             if (!text) return false;
 
@@ -482,6 +504,9 @@
             flowerCounter++;
         }
 
+        /**
+         * Controls for the bouquet background styles.
+         */
         function bouquetControls() {
             const style = $('#backgroundStyle').value;
             if (style.includes('bouquet')) {
@@ -502,6 +527,9 @@
             }
         }
 
+        /**
+         * Controls for the random background styles.
+         */
         function randomizeControls() {
             if ($('#backgroundStyle').value.includes('random')) {
                 $('#btnRandomizeFlowerColors').parentNode.style.display = 'initial';
