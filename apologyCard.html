@@ -20,12 +20,34 @@
         fieldset textarea {max-width:400px;}
         fieldset input:not([type=checkbox]),fieldset textarea {width:-moz-available;width:-webkit-fill-available;}
     </style>
+    <!-- 
+    MIT License
+
+    Copyright (c) 2023 Brennan Patrick Goewert
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
+    -->
 </head>
 <body>
     <h1>Greeting Card Maker</h1>
     <p>Originally a HTML5 Canvas assignment for a "Graphics for the Web" college course. Expanded to be able to edit the canvas and create apology/greeting cards. This is mainly an educational project.</p>
     <p>The canvas is sized to 550x412 pixels, which is the same as a 4:3 6x9 greeting card.</p>
-
     <!-- 550 x 412 is 4:3 ratio which is the same as a 6x9 greeting card -->
     <canvas width="550" height="412"></canvas>
     <details id="edit">
@@ -104,32 +126,6 @@
                 </div>
             </fieldset>
         </form>
-    </details>
-    <details class="license">
-        <summary>License</summary>
-        <pre class="license">
-MIT License
-
-Copyright (c) 2023 Brennan Patrick Goewert
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-        </pre>
     </details>
     <script>
         // Shorthand for document.querySelector and document.querySelectorAll
